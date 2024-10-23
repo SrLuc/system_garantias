@@ -21,7 +21,8 @@ app.get("/clientes", (req, res) => {
 
 
 app.listen(port, () => {
-    pool.connect().then(() => {
-        console.log(`App listening at http://localhost:${port}`);
+    pool.connect().then((client) => {
+        console.log('Connected to the database');
+        client.release();
     })
 })
