@@ -16,6 +16,7 @@ app.get("/clientes", (req, res) => {
             res.status(400).send("Error");
             return;
         }
+        res.json(result.rows);
     });
 })
 
