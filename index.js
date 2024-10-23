@@ -21,10 +21,7 @@ app.get("/clientes", (req, res) => {
 
 
 app.listen(port, () => {
-    pool.connect((err, client, done) => {
-        if (err) throw err;
-        console.log('Connected to database');
-        console.log(`Server started on http://localhost:${port}`);
-        done();
-    });
+    pool.connect().then(() => {
+        console.log(`App listening at http://localhost:${port}`);
+    })
 })
