@@ -20,6 +20,18 @@ app.get("/clientes", (req, res) => {
     });
 })
 
+app.get("/equipamentos", (req, res) => {
+    pool.query("SELECT e.*, c.nome AS cliente_nome FROM Equipamentos e JOIN Clientes c ON e.cliente_id = c.id;", (error, result) => {
+        if (error) {
+            res.status(400).send("Error");
+            return;
+        }
+        res.json(result.rows);
+    });
+})
+
+
+
 
 app.listen(port, () => {
     pool.connect().then((client) => {
